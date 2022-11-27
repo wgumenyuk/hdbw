@@ -3,7 +3,7 @@
 WS 2022/23|Softwareentwicklung|27.11.2022
 
 # ThreeCardPokerHands
-Dieses Programm generiert ein standard 52er-Kartendeck und mischt dieses anschließend mit `random.shuffle()`durch.
+Dieses Programm generiert ein standard 52er-Kartendeck und mischt dieses anschließend mit `random.shuffle()` durch.
 Aus dem generierten Deck wird eine Hand mit drei Karten zusammengestellt. Zum Schluss wird nach Spielregeln des Drei-Karten-Pokers das Ranking und die Wahrscheinlichkeit der Hand ermittelt.
 
 ## Verwendung
