@@ -1,0 +1,221 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* Grundlayout für SELFHTML-Beispiele */
+
+html {
+  background: #ac1d49;
+  color: #f3ebe0;	
+  font-family: ;
+}
+
+body {
+  margin: 0 auto;
+  max-width: 65em;
+}
+
+/* Auf der Startseite wird das Bild aus- und als Hintergrundbild eingeblendet. */
+
+#index {
+  background: #ac1d49 url("../img/dummy-1-duotone.jpg") 0px 0px no-repeat;
+  background-size: contain;
+}
+
+#index img {display: none;}
+
+h1, h2 {
+  -webkit-text-decoration: underline dashed;	
+  text-decoration: underline dashed;
+  text-align: center;
+}
+
+#logo {
+  border: 1px solid transparent; font: 0/0 a; text-shadow: none; color: transparent;	
+  position: relative;
+}
+
+#logo:before {
+  position: absolute;	
+  content: " /";
+  background: #ac1d49;
+  color: #f3ebe0;	
+  border-radius: 50%;
+  font-size: 2rem;
+  width: 1em;
+  height: 1em;
+  padding: 0 0.1em 0.2em 0.1em;
+  line-height: 100%;
+}
+
+a {
+  color: skyblue;
+}
+
+a:hover,
+a:focus {
+	background: white;
+}
+
+#styleswitcher ul {
+	list-style-type: none;
+}
+
+table {
+	width: 100%;	
+}
+table, th, td { 
+	border: 1px solid; 
+  	border-collapse: collapse; 
+	padding: 0.5em;
+}
+
+/* responsives Layout */
+
+body {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+/* Mobile first - alle Dokument-Blöcke bekommen 100% Breite */
+header, nav, nav a, article, section, aside, footer {
+  border-radius: 0 0.5em 0.5em;
+  padding: 10px;
+  margin: 10px;
+  flex: 1 100%;
+}
+
+header {
+  display: flex;
+  flex-flow: row wrap;
+}
+header * {
+  flex: 1 1 0%;
+}
+header img {
+  flex: 0 0 150px;
+  margin-right: 20px;
+}
+header nav {
+  flex: 1 1 100%;
+}
+nav, nav ul, nav li{
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+nav ul {
+  display: flex;
+  flex-direction: column;
+}
+nav li {
+  list-style-type: none;
+  margin: 1.3em 0;
+  flex: 1 1 100%;
+}
+nav a {
+  display: inline-block;
+  width: 95%;
+  margin: 0;
+  text-decoration: none;
+  text-align: center;
+  background: #f3ebe0;
+  color: #ac1d49;
+}
+
+footer {
+  display: flex;
+  flex-flow: row wrap;
+}
+footer * {
+  flex: 1 1 0%;
+  justify-content: space-between;
+}
+footer p {
+  text-align: right;
+}
+/* Smart Phones und Tablets mit mittlerer Auflösung */
+@media all and (min-width: 35em) {
+#index header  {
+ height: 35em;
+}
+
+#logo:before {
+  top: -2em;
+  left: -2.5em;
+}
+
+nav ul {
+  position: relative;
+  flex-direction: row;
+}
+nav a {
+  width: auto;	
+  background: transparent;
+  border-color: transparent;
+  color: #f3ebe0;	 
+  font-weight: bold;
+  font-size: 1.4em;
+}
+
+#index nav li:nth-child(1) a {position: absolute; top: 6em; left: 0em;}
+#index nav li:nth-child(2) a {position: absolute; top: 4em; left: 7em;}
+#index nav li:nth-child(3) a {position: absolute; top: 4em; right: 3em;}
+#index nav li:nth-child(4) a {position: absolute; top: 2em; right: 0em;}
+
+nav a:hover, nav a:focus {
+  background: transparent;
+  border-color: transparent;
+  color: #f3ebe0;	
+  text-shadow:
+	0 0 10px #fff,
+	0 0 20px #f3ebe0,
+	0 0 30px #f3ebe0,
+	0 0 40px #f3ebe0,
+	0 0 50px #f3ebe0,
+	0 0 60px #f3ebe0,
+	0 0 70px #f3ebe0;
+}
+
+article {
+  order: 2;
+}
+#news {
+  flex: 1 auto;
+  order: 3;
+}
+aside {
+/* durch auto werden die beiden asides in eine Zeile gesetzt */
+  flex: 1 auto;
+  order: 4;
+}
+footer {
+  order: 5;
+}
+}
+
+/* Large screens */
+@media all and (min-width: 50em) {
+#logo:before {
+  top: -1em;
+  left: -5em;
+}	
+	
+#index nav li:nth-child(1) a {position: absolute; top: -3em; left: 3em;}
+#index nav li:nth-child(2) a {position: absolute; top: 2em; left: 13em;}
+#index nav li:nth-child(3) a {position: absolute; top: -2em; right: 11em;}
+#index nav li:nth-child(4) a {position: absolute; top: 2em; right: 1.5em;}	
+     article {
+  /* Der Article wird 2.5x so breit wie die beiden asides! */
+  order: 3;
+  flex: 5 1 0%;
+}
+aside {
+  flex: 2 1 0%;
+}
+#news {
+  flex: 2 1 0%;
+  order: 2;
+  align-self: center;
+  height: 120px;
+}
+}

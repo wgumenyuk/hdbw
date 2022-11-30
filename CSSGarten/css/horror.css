@@ -1,0 +1,234 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* Theme horror vacui  */
+
+/* alternatives Boxmodell */
+html { 
+  box-sizing: border-box; 
+} 
+
+*, ::before, ::after { 
+  box-sizing: inherit; 
+}
+
+html {
+	background: white;
+	color: #222;	
+    font: normal 1em Arial, sans-serif;  /* Mindestschriftgröße wird dem Browser, bzw. dem Nutzer überlassen! */
+}
+
+body {
+  margin: 0 auto;
+  padding: 0;
+}
+
+body > * {
+  padding: 1em;
+  margin: 1em 0;
+}
+
+/* header - Seitenkopf */
+
+header {
+  margin: 0;
+  padding: 0;
+}
+
+header h1 {				/* Dies sollte man nie tun! Wenn das Theme eingesetzt werden soll, muss das HTML-Markup entsprechend geändert werden. */
+  display: none
+}
+
+/* Navigation  - zuerst untereinander. Das geht auch mit einem Raster mit EINER Spalte. Umgeschaltet wird ab 30em Breite (Zeile ...) */
+
+nav {
+}
+
+nav ul {
+	list-style-type: none;
+	display: grid;
+	grid-template-columns: 1fr;  
+}
+
+nav a {
+	display: block;	
+	background: black;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	padding: 0.5em;
+	margin: 0.5em;
+}
+
+nav a:hover,
+nav a:focus {
+	background:#666;
+}
+
+nav a[aria-current=page]{
+	font-weight: bold;;
+}
+
+/* Inhalt */
+
+a {
+	color: #09c
+}
+
+a:hover, a:focus {
+	background: #e6f2f7 ;
+}
+
+#news {
+	background: #ffebe6;
+	border: 2px dashed #c32e04;	
+}
+
+#news h2 {
+	color: #c32e04;
+}	
+
+#styleswitcher ul {
+  list-style-type: none;
+}
+
+#styleswitcher button {
+	width: 10em;
+}
+
+footer {
+	background: black;
+	color: white;
+  	margin: 0;
+	display: grid;	
+	grid-template-columns: 1fr 1fr;  	
+}
+
+footer p:last-child {
+	text-align: right;
+}
+
+a[href^="tel"] { white-space: nowrap; }
+
+
+@media (min-width: 30em) { 
+	body {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);  
+	}
+	nav {
+		background: black;
+	}
+	nav ul {
+		grid-template-columns: repeat(4, 1fr);  
+		max-width: 40em;
+		margin: 0 auto;
+	}	
+	
+	nav a {
+		margin: 0;
+	}
+	
+	header,
+	article,
+	footer {
+    	grid-column: 1 / 3;
+  	}
+	
+	.galerie {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);  
+		grid-gap: 1em;	
+	}
+	
+	.galerie > h2,
+	.galerie > p {
+		grid-column: 1 / 3;
+	}
+	
+	.galerie > figure {
+		margin: 0;
+		padding: 0;
+	}
+	
+	.galerie img {
+		width: 100%;
+	}	
+}
+
+@media (min-width: 40em) { 
+	body {
+		grid-template-columns: 1fr 32em 15em 1fr;  		/* Diesmal besteht das grid aus unterschiedlich breiten Spalten  article und die beiden asides bleiben gleichbreit, der Rand erählt den überschüssigen Raum.*/
+  		grid-template-rows: 2em auto 1fr 3em;
+		grid-gap: 1em;
+  		min-height: 100vh;		
+	}
+	
+	header,
+	footer {
+    	grid-column: 1 / 5;
+  	}	
+	
+	aside {
+    	grid-column: 3 / 4;
+    	grid-row:    2 / 3;					
+  	}
+	
+	#news {					/* Ohne explizite Festlegung würde der article wegen seiner Zweispaltigkeit neben #news keinen Platz finden und deshalb eine Reihe nach unten rutschen. Dafür würde der styleswitcher oben rechts positioniert. */
+    	grid-column: 3 / 4;
+    	grid-row:    2 / 3;					
+  	}
+	
+	#styleswitcher {
+	  	grid-column: 3 / 4;
+	  	grid-row:    3 / 4;					
+	}  
+
+	article, table {
+    	grid-column: 2 / 3;
+    	grid-row: 	 2 / 4;		
+  	}  	
+	
+	.galerie > h2,
+	.galerie > p {
+		grid-column: 1 / 4;
+	}
+	
+	.galerie {
+		grid-template-columns: repeat(3, 1fr);  
+	}
+	
+	#index img {
+		width: 33%;
+		float: right;
+		margin-left: 1em;
+	}
+}
+
+/* Terminkalender */
+
+table, th, td { 
+  width: 100%;
+  border: 0px solid; 
+  border-collapse: collapse; 
+}
+
+th, td {
+	padding: .5em;
+}
+
+th {
+	background: #ffebe6;
+	border: 1px solid #c32e04;
+	color: #c32e04;
+}
+
+td {
+	border-bottom: 1px solid #c32e04;
+}
+
+caption {
+	caption-side: bottom;
+	padding-top: 4em;
+	font-size: .75em;
+}

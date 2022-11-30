@@ -1,0 +1,238 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* Grundlayout für SELFHTML-Beispiele */
+
+html {
+        background: transparent!important;    background: pink;
+}
+
+body {
+	margin: 1em auto;
+	max-width: 65em;
+	font-family: sans-serif;
+	color: #333333;
+}
+
+h1, main, aside, main svg {
+	border-radius: 0 8px 8px;
+	border: 1px solid;
+	padding: 1em;
+	margin: 1em;
+}
+
+h1 {
+	border-color: #d5d5d5;
+}
+
+h1::after {
+  content: '- im Selfhtml-Standard-Look';
+}
+
+article img {
+	width: 33%;
+	float: right;
+	margin-left: 0.2em;
+}
+
+figure {
+  display: inline-block;
+  width: 30%;
+  margin: 0.2em;
+}
+figure img {
+  width: 100%;
+}
+figure figcaption {
+  font-style: italic;
+}
+
+#logo {
+  background: #F1F3F4 url("https://wiki.selfhtml.org/images/a/ad/Selfhtml-beispiel_150.svg") 0px 0px no-repeat;
+  display: inline-block;
+  width:150px;
+  height: 50px;
+  border: 1px solid transparent; font: 0/0 a; text-shadow: none; color: transparent;
+}
+
+main {
+	display: block;     /* für IE */	
+	min-height: 400px;
+}
+
+aside {
+	background: #c4ced3;
+	border-color: #8a9da8;
+} 
+
+#hinweis {                    /* für Container */
+
+	border-left: 5px solid #c32e04;
+}
+
+.hinweis {                    /* für Textzeile */
+        color: #c32e04; 
+        font-style: italic; 
+        border-bottom: 1px dotted; 
+        display:inline-block; 
+}
+
+/* responsives Layout */
+
+body {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+/* Mobile first - alle Dokument-Blöcke bekommen 100% Breite */
+header, nav, nav a, article, section, aside, footer {
+  border-radius: 0px 0.5em 0.5em;
+  border: 1px solid;
+  padding: 1em;
+  margin: 1em;
+  flex: 1 100%;
+}
+
+header {
+  background: #F1F3F4;
+  border-color: #d5d5d5;
+  display: flex;
+  flex-flow: row wrap;
+}
+header * {
+  flex: 1 1 0%;
+  margin: 0 1em;
+}
+header img {
+  flex: 0 0 150px;
+  margin-right: 20px;
+}
+header nav {
+  flex: 1 1 100%;
+  margin: .5em 2em;
+  border-color: #d5d5d5;
+}
+nav ul, nav li{
+  margin: 0 0.5em;
+  padding: 0 0.5em;
+  border: 0;
+}
+nav ul {
+  display: flex;
+  flex-direction: column;
+}
+nav li {
+  list-style-type:none;
+  margin: 1.3em 0;
+  flex: 1 1 100%;
+}
+nav a {
+  display:inline-block;
+  width:95%;
+  background: #fffbf0;
+  border: 1px solid #dfac20;
+  margin: 0;
+  text-decoration: none;
+  text-align: center;
+}
+nav a:hover, nav a:focus {
+  background-color: #dfac20;
+}
+
+nav a[aria-current=page] {
+	color:black;
+	font-weight:bold;
+}
+section {
+  background: #F1F3F4;
+  border-color: slateblue;
+}
+article {
+  background: #ffede0;
+  border-color: #df6c20;
+}
+aside {
+  background: #ebf5d7;
+  border-color: #8db243;
+}
+footer {
+  background: #e4ebf2;
+  border-color: #8a9da8;
+  display: flex;
+  flex-flow: row wrap;
+}
+footer * {
+  flex: 1 1 0%;
+  justify-content: space-between;
+}
+footer p:last-child {
+  text-align: right;
+}
+/* Smart Phones und Tablets mit mittlerer Auflösung */
+@media all and (min-width: 35em) {
+header img {
+  margin-right: 50px;
+}
+nav ul {
+  flex-direction: row;
+}
+nav li {
+  margin: 0 10px;
+  flex: 1 1 0%;
+}
+article {
+  order: 2;
+}
+#news {
+  flex: 1 auto;
+  order: 3;
+}
+aside {
+/* durch auto werden die beiden asides in eine Zeile gesetzt */
+  flex: 1 auto;
+  order: 4;
+}
+footer {
+  order: 5;
+}
+}
+
+/* Large screens */
+@media all and (min-width: 50em) {
+  article {    /* Der Article wird 2.5x so breit wie die beiden asides! */
+    order: 3;
+    flex: 3 1 0%;
+  }
+  aside {
+    flex: 1 1 0%;
+  }
+  #news {
+    flex: 1 1 0%;	  
+    order: 2;
+    align-self: center;
+    height: 12em;
+  }
+}
+
+/* Terminkalender */
+
+table, th, td { 
+	width: 100%;
+  	border: 1px solid; 
+  	border-collapse: collapse; 
+}
+
+th, td {
+	padding: .5em;
+}
+
+th {
+	background: #c32e04;
+	color: #ffede0;
+}
+
+caption {
+	caption-side: bottom;
+	padding-top: 2em;
+	font-style: italic;
+}

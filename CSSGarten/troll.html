@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <style>
+            html, body {
+                display: flex;
+                width: 100%;
+                height: 100%;
+                margin: 0px;
+                padding: 0px;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+            }
+
+            img {
+                width: 200%;
+                height: 200%;
+                animation: 1s spin linear infinite;
+            }
+
+            @keyframes spin {
+                from {
+                    rotate: 0deg;
+                    filter: hue-rotate(0deg);
+                }
+
+                to {
+                    rotate: 360deg;
+                    filter: hue-rotate(360deg);
+                }
+            }
+        </style>
+
+        <title>Troll</title>
+    </head>
+    <body>
+        <img src="trip.jpg" alt="trip" draggable="false"/>
+    </body>
+</html>

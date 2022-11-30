@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100" height="50" viewBox="0 0 100 50">
+<title>Logo classic</title>
+
+<rect x="1" y="1" width="98" height="48" fill="orange" stroke="#5d0505" stroke-width="2" rx="10" ry="10" />
+
+<path id="winkel" fill="#5d0505" d="M6,20 v10 l30,15 v-8 l-24,-12 l24,-12 v-8z"/>
+<path id="slash" fill="#5d0505" d="M53,5 l-10,40 h5 l10,-40z"/>
+<use xlink:href="#winkel" transform="translate(100,0) scale(-1,1)" x="0" y="0"/>
+
+</svg>
