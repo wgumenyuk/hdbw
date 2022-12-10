@@ -21,6 +21,16 @@ class BaseState:
         self.next_state: str = None
         self.persistent_data: dict = {}
 
+    def init(self, persistent_data: dict) -> None:
+        """
+        Initialisiert anhaltende Daten beim Eintreten eines neuen Zustandes.
+
+        Parameter:
+        - `persistent_data` (dict) - Über Zustände anhaltende Daten.
+        """
+
+        self.persistent_data = persistent_data
+
     def handle_event(self, event: pg.event.Event) -> None:
         """
         Verarbeitet ein vom Spiel eingehendes Event.
