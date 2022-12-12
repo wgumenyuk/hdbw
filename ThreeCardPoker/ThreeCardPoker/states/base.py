@@ -8,7 +8,7 @@ class BaseState:
     - `is_done` (bool)          - Ob der Zustand abgeschlossen ist.
     - `quit` (bool)             - Ob der Nutzer das Spiel verlassen möchte.
     - `next_state` (str)        - Name des darauffolgenden Zustands.
-    - `persistent_data` (str)   - Über alle Zustände anhaltende Daten.
+    - `persistent_data` (dict)  - Über alle Zustände anhaltende Daten.
     """
 
     def __init__(self) -> None:
