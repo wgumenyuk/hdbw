@@ -52,7 +52,7 @@ class BaseState:
         - `event` (pg.event.Event) - Eingehendes Event.
         """
 
-        raise Exception("handle_event() nicht implementiert")
+        raise NotImplementedError("handle_event() nicht implementiert")
 
     def render(self, screen: pg.Surface) -> None:
         """
@@ -63,4 +63,4 @@ class BaseState:
         - `screen` (pg.Surface) - Bildschirm, auf den gerendert wird.
         """
 
-        raise Exception("render() nicht implementiert")
+        raise NotImplementedError("render() nicht implementiert")
