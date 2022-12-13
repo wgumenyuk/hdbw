@@ -35,7 +35,7 @@ class BaseState:
     def update(self, tick: int) -> None:
         """
         Aktualisiert den Zustand.
-        Kann von von individuellen Unterklassen implementiert werden.
+        Kann von individuellen Unterklassen implementiert werden.
 
         Parameter:
         - `tick` (int) - Wie viele Millisekunden seit dem letzten Update vergangen sind. 
@@ -46,7 +46,7 @@ class BaseState:
     def handle_event(self, event: pg.event.Event) -> None:
         """
         Verarbeitet ein vom Spiel eingehendes Event.
-        Muss von von individuellen Unterklassen implementiert werden.
+        Muss von individuellen Unterklassen implementiert werden.
 
         Parameter:
         - `event` (pg.event.Event) - Eingehendes Event.
@@ -57,7 +57,7 @@ class BaseState:
     def render(self, screen: pg.Surface) -> None:
         """
         Elemente, die im Zustand gerendert werden.
-        Muss von von individuellen Unterklassen implementiert werden.
+        Muss von individuellen Unterklassen implementiert werden.
 
         Parameter:
         - `screen` (pg.Surface) - Bildschirm, auf den gerendert wird.
