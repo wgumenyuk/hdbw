@@ -80,7 +80,7 @@ class MenuState(BaseState):
             elif event.key == pg.K_RETURN:
                 self.handle_enter()
 
-    def get_option_text_pos(self, option_text: pg.Surface, index: int) -> pg.Rect:
+    def get_option_text_rect(self, option_text: pg.Surface, index: int) -> pg.Rect:
         """
         Platziert die jeweilige Option mittig und leicht nach unten verschoben.
 
@@ -120,5 +120,5 @@ class MenuState(BaseState):
         
         for i, _ in enumerate(self.options):
             option_text = self.render_option_text(i)
-            option_text_rect = self.get_option_text_pos(option_text, i)
+            option_text_rect = self.get_option_text_rect(option_text, i)
             screen.blit(option_text, option_text_rect)
