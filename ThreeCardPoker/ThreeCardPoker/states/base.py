@@ -25,6 +25,7 @@ class BaseState:
     def init(self, persistent_data: dict) -> None:
         """
         Initialisiert anhaltende Daten beim Eintreten eines neuen Zustandes.
+        Kann von individuellen Unterklassen implementiert werden.
 
         Parameter:
         - `persistent_data` (dict) - Über Zustände anhaltende Daten.
