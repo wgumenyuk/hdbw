@@ -31,6 +31,17 @@ class BaseState:
 
         self.persistent_data = persistent_data
 
+    def update(self, tick: int) -> None:
+        """
+        Aktualisiert den Zustand.
+        Kann von von individuellen Unterklassen implementiert werden.
+
+        Parameter:
+        - `tick` (int) - Wie viele Millisekunden seit dem letzten Update vergangen sind. 
+        """
+
+        pass
+
     def handle_event(self, event: pg.event.Event) -> None:
         """
         Verarbeitet ein vom Spiel eingehendes Event.
