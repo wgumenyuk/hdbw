@@ -1,4 +1,5 @@
 import pygame as pg
+from constants import GameState
 
 class BaseState:
     """
@@ -7,7 +8,7 @@ class BaseState:
     Attribute:
     - `is_done` (bool)          - Ob der Zustand abgeschlossen ist.
     - `quit` (bool)             - Ob der Nutzer das Spiel verlassen möchte.
-    - `next_state` (str)        - Name des darauffolgenden Zustands.
+    - `next_state` (GameState)  - Name des darauffolgenden Zustands.
     - `persistent_data` (dict)  - Über alle Zustände anhaltende Daten.
     """
 
@@ -18,7 +19,7 @@ class BaseState:
 
         self.is_done: bool = False
         self.quit: bool = False
-        self.next_state: str = None
+        self.next_state: GameState = None
         self.persistent_data: dict = {}
 
     def init(self, persistent_data: dict) -> None:
