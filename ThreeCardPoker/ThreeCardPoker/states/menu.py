@@ -24,7 +24,7 @@ class MenuState(BaseState):
         self.persistent_data = { "balance": 0 }
         self.font = pg.font.Font(None, 36)
 
-        base_path = path.join(path.dirname(path.abspath(__file__)), "../../assets/")
+        base_path = path.join(path.dirname(path.abspath(__file__)), "../../assets")
         logo_path = path.join(base_path, "png/logo_black.png")
         click_sound_path = path.join(base_path, "ogg/click.ogg")
 
