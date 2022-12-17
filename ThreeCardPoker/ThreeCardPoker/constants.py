@@ -14,3 +14,4 @@ class GameState(Enum):
 
     MENU = "MENU"
     ANTE = "ANTE"
+    PAIR_PLUS = "PAIR_PLUS"
