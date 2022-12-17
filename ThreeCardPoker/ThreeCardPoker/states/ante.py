@@ -55,6 +55,7 @@ class AnteState(BaseState):
             elif event.key == pg.K_RETURN:
                 self.next_state = "PAIR_PLUS" if self.ante < self.max_ante else "CARD_DRAWING"
                 self.persistent_data["balance"] = self.balance
+                self.persistent_data["ante"] = self.ante
                 self.is_done = True
 
         self.balance_text = self.font.render(f"Guthaben: ${self.balance}", True, TEXT_LIGHT_COLOR)
