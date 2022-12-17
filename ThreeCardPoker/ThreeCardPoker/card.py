@@ -29,8 +29,8 @@ class Card:
         back_path = path.join(base_path, "back.png")
         front_path = path.join(base_path, f"{suit_name}_{rank_name}.png")
 
-        self.back_img: pg.Surface = pg.image.load(back_path)
-        self.front_img: pg.Surface = pg.image.load(front_path)
+        self.back_img: pg.Surface = pg.transform.scale(pg.image.load(back_path), (110, 160))
+        self.front_img: pg.Surface = pg.transform.scale(pg.image.load(front_path), (110, 160))
 
     def get_texture(self) -> pg.Surface:
         """
