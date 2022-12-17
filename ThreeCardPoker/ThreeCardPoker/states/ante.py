@@ -1,6 +1,6 @@
 import pygame as pg
 from states import BaseState
-from constants import BG_COLOR, TEXT_LIGHT_COLOR, SCREEN_WIDTH, SCREEN_HEIGHT
+from table import render_table
 
 class AnteState(BaseState):
     """
@@ -30,4 +30,4 @@ class AnteState(BaseState):
         pass
 
     def render(self, screen: pg.Surface) -> None:
-        screen.fill(BG_COLOR)
+        render_table(screen)
