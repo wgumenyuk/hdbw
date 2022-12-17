@@ -1,5 +1,6 @@
 import pygame as pg
 from states import BaseState
+from deck import Deck
 from table import render_table
 from constants import TEXT_LIGHT_COLOR, GameState
 
@@ -47,6 +48,7 @@ class AnteState(BaseState):
         
         self.persistent_data["balance"] = self.balance
         self.persistent_data["ante"] = self.ante
+        self.persistent_data["deck"] = Deck()
         self.is_done = True
 
     def handle_event(self, event: pg.event.Event) -> None:
