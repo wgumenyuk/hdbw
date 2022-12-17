@@ -1,7 +1,7 @@
 import pygame as pg
 from states import BaseState
 from table import render_table
-from constants import TEXT_LIGHT_COLOR
+from constants import TEXT_LIGHT_COLOR, GameState
 
 ANTE_STEP = 5
 
@@ -53,7 +53,12 @@ class AnteState(BaseState):
                 self.ante -= ANTE_STEP
                 self.balance += ANTE_STEP
             elif event.key == pg.K_RETURN:
-                self.next_state = "PAIR_PLUS" if self.ante < self.max_ante else "CARD_DRAWING"
+                if self.ante < self.max_ante:
+                    self.next_state = GameState.PAIR_PLUS
+                else:
+                    # TODO self.next_state = GameState.CARD_DRAWING
+                    pass
+                
                 self.persistent_data["balance"] = self.balance
                 self.persistent_data["ante"] = self.ante
                 self.is_done = True
