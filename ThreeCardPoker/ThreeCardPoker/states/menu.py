@@ -21,7 +21,7 @@ class MenuState(BaseState):
         super().__init__()
 
         self.next_state = GameState.ANTE
-        self.persistent_data = { "balance": 0 }
+        self.persistent_data = { "balance": 100 }
         self.font = pg.font.Font(None, 36)
 
         base_path = path.join(path.dirname(path.abspath(__file__)), "../../assets")
