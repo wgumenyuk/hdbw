@@ -1,7 +1,7 @@
 import pygame as pg
 from states import BaseState
 from table import render_table
-from constants import TEXT_LIGHT_COLOR
+from constants import TEXT_LIGHT_COLOR, GameState
 
 PAIR_PLUS_STEP = 5
 
@@ -54,7 +54,7 @@ class PairPlusState(BaseState):
                 self.balance += PAIR_PLUS_STEP
                 self.pair_plus -= PAIR_PLUS_STEP
             elif event.key == pg.K_RETURN:
-                # TODO self.next_state = GameState.CARD_DRAWING
+                self.next_state = GameState.CARD_DRAWING
                 self.persistent_data["balance"] = self.balance
                 self.persistent_data["pair_plus"] = self.pair_plus
                 self.is_done = True
