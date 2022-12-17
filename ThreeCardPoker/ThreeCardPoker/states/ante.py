@@ -67,6 +67,13 @@ class AnteState(BaseState):
         self.ante_text = self.font.render(f"Ante: ${self.ante}", True, TEXT_LIGHT_COLOR)
 
     def render(self, screen: pg.Surface) -> None:
+        """
+        Rendert die Elemente im Ante-Zustand.
+        
+        Parameter:
+        - `screen` (pg.Surface) - Bildschirm, auf den gerendert wird.
+        """
+
         render_table(screen)
         screen.blit(self.balance_text, (50, 50))
         screen.blit(self.ante_text, (50, 75))
