@@ -33,6 +33,22 @@ class AnteState(BaseState):
         self.max_ante = self.balance / 2
         self.balance_text = self.font.render(f"Guthaben: ${self.balance}", True, TEXT_LIGHT_COLOR)
 
+    def handle_enter(self) -> None:
+        """
+        Wird aufgerufen, sobald der Spieler die Enter-Taste drückt, und somit seine
+        Ante-Wette abschließt.
+        """
+
+        if self.ante < self.max_ante:
+            self.next_state = GameState.PAIR_PLUS
+        else:
+            # TODO self.next_state = GameState.CARD_DRAWING
+            pass
+        
+        self.persistent_data["balance"] = self.balance
+        self.persistent_data["ante"] = self.ante
+        self.is_done = True
+
     def handle_event(self, event: pg.event.Event) -> None:
         """
         Verarbeitet ein vom Spiel eingehendes Event.
@@ -46,22 +62,20 @@ class AnteState(BaseState):
             return
 
         if event.type == pg.KEYUP:
+            # Pfeiltaste nach oben 
             if event.key == pg.K_UP and self.balance - ANTE_STEP >= self.max_ante:
                 self.ante += ANTE_STEP
                 self.balance -= ANTE_STEP
+            
+            # Pfeiltaste nach unten
             elif event.key == pg.K_DOWN and self.ante - ANTE_STEP > 0:
                 self.ante -= ANTE_STEP
                 self.balance += ANTE_STEP
+            
+            # Enter
             elif event.key == pg.K_RETURN:
-                if self.ante < self.max_ante:
-                    self.next_state = GameState.PAIR_PLUS
-                else:
-                    # TODO self.next_state = GameState.CARD_DRAWING
-                    pass
-                
-                self.persistent_data["balance"] = self.balance
-                self.persistent_data["ante"] = self.ante
-                self.is_done = True
+                self.handle_enter()
+                return
 
         self.balance_text = self.font.render(f"Guthaben: ${self.balance}", True, TEXT_LIGHT_COLOR)
         self.ante_text = self.font.render(f"Ante: ${self.ante}", True, TEXT_LIGHT_COLOR)
