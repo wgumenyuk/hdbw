@@ -1,5 +1,5 @@
 import pygame as pg
-from states import BaseState, MenuState, AnteState
+from states import BaseState, MenuState, AnteState, PairPlusState
 from constants import TITLE, SCREEN_WIDTH, SCREEN_HEIGHT, FPS, GameState
 
 class Game:
@@ -29,7 +29,8 @@ class Game:
 
         self.states: dict[GameState, BaseState] = {
             GameState.MENU: MenuState(),
-            GameState.ANTE: AnteState()
+            GameState.ANTE: AnteState(),
+            GameState.PAIR_PLUS: PairPlusState()
         }
 
         self.state_name: str = GameState.MENU
