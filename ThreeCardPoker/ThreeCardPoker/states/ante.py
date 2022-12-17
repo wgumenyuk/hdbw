@@ -43,8 +43,7 @@ class AnteState(BaseState):
         if self.ante < self.max_ante:
             self.next_state = GameState.PAIR_PLUS
         else:
-            # TODO self.next_state = GameState.CARD_DRAWING
-            pass
+            self.next_state = GameState.CARD_DRAWING
         
         self.persistent_data["balance"] = self.balance
         self.persistent_data["ante"] = self.ante
