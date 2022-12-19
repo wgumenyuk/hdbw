@@ -21,7 +21,10 @@ def render_chip(screen: pg.Surface, amount: int, dest: tuple[int]) -> None:
     """
 
     font = pg.font.Font(None, 26)
+    
     amount_text = font.render(f"${amount}", True, TEXT_LIGHT_COLOR)
+    amount_text_dest = (dest[0] + chip.get_rect().centerx, dest[1] + chip.get_rect().centery)
+    amount_text_rect = amount_text.get_rect(center=amount_text_dest)
 
     screen.blit(chip, dest)
-    screen.blit(amount_text, (dest[0] + CHIP_TEXT_OFFSET_X, dest[1] + CHIP_TEXT_OFFSET_Y))
+    screen.blit(amount_text, amount_text_rect)
