@@ -1,7 +1,8 @@
 import pygame as pg
 from states import BaseState
 from table import render_table
-from constants import TEXT_LIGHT_COLOR, GameState
+from chip import render_chip
+from constants import TEXT_LIGHT_COLOR, ANTE_CHIP_POS, GameState
 
 PAIR_PLUS_STEP = 5
 
@@ -71,6 +72,7 @@ class PairPlusState(BaseState):
         """
 
         render_table(screen)
+        render_chip(screen, self.ante, ANTE_CHIP_POS)
         screen.blit(self.balance_text, (50, 50))
         screen.blit(self.ante_text, (50, 75))
         screen.blit(self.pair_plus_text, (50, 100))
