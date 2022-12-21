@@ -1,7 +1,7 @@
 import pygame as pg
 from states import BaseState
 from table import render_table
-from chip import render_chip
+from chip import render_chip, play_chip_place_sound
 from constants import TEXT_LIGHT_COLOR, ANTE_CHIP_POS, GameState
 
 PAIR_PLUS_STEP = 5
@@ -55,6 +55,7 @@ class PairPlusState(BaseState):
                 self.balance += PAIR_PLUS_STEP
                 self.pair_plus -= PAIR_PLUS_STEP
             elif event.key == pg.K_RETURN:
+                play_chip_place_sound()
                 self.next_state = GameState.CARD_DRAWING
                 self.persistent_data["balance"] = self.balance
                 self.persistent_data["pair_plus"] = self.pair_plus
