@@ -2,6 +2,7 @@ import pygame as pg
 from states import BaseState
 from deck import Deck
 from table import render_table
+from chip import play_chip_place_sound
 from constants import TEXT_LIGHT_COLOR, GameState
 
 ANTE_STEP = 5
@@ -39,6 +40,8 @@ class AnteState(BaseState):
         Wird aufgerufen, sobald der Spieler die Enter-Taste drückt, und somit seine
         Ante-Wette abschließt.
         """
+
+        play_chip_place_sound()
 
         if self.ante < self.max_ante:
             self.next_state = GameState.PAIR_PLUS
