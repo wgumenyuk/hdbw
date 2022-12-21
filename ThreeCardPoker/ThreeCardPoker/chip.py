@@ -4,6 +4,7 @@ from constants import TEXT_LIGHT_COLOR
 
 base_path = path.join(path.dirname(path.abspath(__file__)), "../assets")
 chip_path = path.join(base_path, "png/poker_chip.png")
+chip_place_sound_path = path.join(base_path, "ogg/chip_place.ogg")
 
 chip = pg.transform.scale(pg.image.load(chip_path), (80, 80))
 
@@ -25,3 +26,10 @@ def render_chip(screen: pg.Surface, amount: int, dest: tuple[int]) -> None:
 
     screen.blit(chip, dest)
     screen.blit(amount_text, amount_text_rect)
+
+def play_chip_place_sound():
+    """
+    Spielt einen Soundeffekt ab, sobald ein Poker-Chip auf dem Tisch platziert wird.
+    """
+
+    pg.mixer.Sound(chip_place_sound_path).play()
