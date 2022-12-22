@@ -37,4 +37,4 @@ class Card:
         Gibt das zu rendernde Element zurück.
         """
 
-        return self.back_img if self.is_hidden else self.front_img 
+        return self.back_img if self.is_hidden else self.front_img
