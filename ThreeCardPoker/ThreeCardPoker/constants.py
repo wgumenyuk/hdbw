@@ -34,3 +34,4 @@ class GameState(Enum):
     PAIR_PLUS = "PAIR_PLUS"
     CARD_DRAWING = "CARD_DRAWING"
     PLAY_OR_FOLD = "PLAY_OR_FOLD"
+    FOLD = "FOLD"
