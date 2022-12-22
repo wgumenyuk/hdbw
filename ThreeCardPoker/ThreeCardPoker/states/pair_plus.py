@@ -30,8 +30,8 @@ class PairPlusState(BaseState):
 
         super().init(persistent_data)
         
-        self.balance = self.persistent_data["balance"]
-        self.ante = self.persistent_data["ante"]
+        self.balance: int = self.persistent_data["balance"]
+        self.ante: int = self.persistent_data["ante"]
         self.balance_text = self.font.render(f"Guthaben: ${self.balance}", True, TEXT_LIGHT_COLOR)
         self.ante_text = self.font.render(f"Ante: ${self.ante}", True, TEXT_LIGHT_COLOR)
 
