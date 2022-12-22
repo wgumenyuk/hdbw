@@ -35,6 +35,20 @@ class PairPlusState(BaseState):
         self.balance_text = self.font.render(f"Guthaben: ${self.balance}", True, TEXT_LIGHT_COLOR)
         self.ante_text = self.font.render(f"Ante: ${self.ante}", True, TEXT_LIGHT_COLOR)
 
+    def handle_enter(self) -> None:
+        """
+        Wird aufgerufen, sobald der Spieler die Enter-Taste drückt, und somit seine
+        Paar-Plus-Wette abschließt.
+        """
+
+        if self.pair_plus > 0:
+            play_chip_place_sound()
+
+        self.next_state = GameState.CARD_DRAWING
+        self.persistent_data["balance"] = self.balance
+        self.persistent_data["pair_plus"] = self.pair_plus
+        self.is_done = True
+
     def handle_event(self, event: pg.event.Event) -> None:
         """
         Verarbeitet ein vom Spiel eingehendes Event.
@@ -55,11 +69,8 @@ class PairPlusState(BaseState):
                 self.balance += PAIR_PLUS_STEP
                 self.pair_plus -= PAIR_PLUS_STEP
             elif event.key == pg.K_RETURN:
-                play_chip_place_sound()
-                self.next_state = GameState.CARD_DRAWING
-                self.persistent_data["balance"] = self.balance
-                self.persistent_data["pair_plus"] = self.pair_plus
-                self.is_done = True
+                self.handle_enter()
+                return
 
         self.balance_text = self.font.render(f"Guthaben: ${self.balance}", True, TEXT_LIGHT_COLOR)
         self.pair_plus_text = self.font.render(f"Paar-Plus: ${self.pair_plus}", True, TEXT_LIGHT_COLOR)
