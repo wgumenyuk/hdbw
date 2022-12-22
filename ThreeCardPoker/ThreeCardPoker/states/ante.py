@@ -31,8 +31,8 @@ class AnteState(BaseState):
 
         super().init(persistent_data)
         
-        self.balance = self.persistent_data["balance"] - self.ante
-        self.max_ante = self.balance / 2
+        self.balance: int = self.persistent_data["balance"] - self.ante
+        self.max_ante: int = self.balance / 2
         self.balance_text = self.font.render(f"Guthaben: ${self.balance}", True, TEXT_LIGHT_COLOR)
 
     def handle_enter(self) -> None:
