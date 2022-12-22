@@ -33,6 +33,10 @@ class Card:
     def get_texture(self, degrees: int = None, hidden: bool = False) -> pg.Surface:
         """
         Gibt das zu rendernde Element zurück.
+
+        Parameter:
+        - `degrees` (int) - Um wie viel Grad die Textur gedreht werden soll.
+        - `hidden` (bool) - Ob die Karte umgedreht ist.
         """
 
         img = self.back_img if hidden else self.front_img
