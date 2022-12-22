@@ -27,7 +27,7 @@ def render_chip(screen: pg.Surface, amount: int, dest: tuple[int]) -> None:
     screen.blit(chip, dest)
     screen.blit(amount_text, amount_text_rect)
 
-def play_chip_place_sound():
+def play_chip_place_sound() -> None:
     """
     Spielt einen Soundeffekt ab, sobald ein Poker-Chip auf dem Tisch platziert wird.
     """
