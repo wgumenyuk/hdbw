@@ -9,7 +9,6 @@ class Card:
     Stellt eine Spielkarte dar.
 
     Attribute:
-    - `is_hidden` (bool)        - Ob die Karte umgedreht ist.
     - `suit_value` (int)        - Wert des Suits.
     - `rank_value` (int)        - Wert des Ranks.
     - `back_img` (pg.Surface)   - Textur der Kartenrückseite.
@@ -21,7 +20,6 @@ class Card:
         Konstruktor.
         """
 
-        self.is_hidden: bool = False
         self.suit_value: int = suit_value
         self.rank_value: int = rank_value
 
@@ -32,10 +30,10 @@ class Card:
         self.back_img: pg.Surface = pg.transform.scale(pg.image.load(back_path), (110, 160))
         self.front_img: pg.Surface = pg.transform.scale(pg.image.load(front_path), (110, 160))
 
-    def get_texture(self, degrees: int = None) -> pg.Surface:
+    def get_texture(self, degrees: int = None, hidden: bool = False) -> pg.Surface:
         """
         Gibt das zu rendernde Element zurück.
         """
 
-        img = self.back_img if self.is_hidden else self.front_img
+        img = self.back_img if hidden else self.front_img
         return pg.transform.rotate(img, degrees) if degrees != None else img
