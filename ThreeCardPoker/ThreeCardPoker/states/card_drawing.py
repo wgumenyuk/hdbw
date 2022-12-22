@@ -1,5 +1,6 @@
 import pygame as pg
 from states import BaseState
+from deck import Deck
 from table import render_table
 from chip import render_chip
 from constants import ANTE_CHIP_POS, PAIR_PLUS_CHIP_POS
@@ -24,9 +25,9 @@ class CardDrawingState(BaseState):
 
         super().init(persistent_data)
         
-        self.ante = self.persistent_data["ante"]
-        self.pair_plus = self.persistent_data.get("pair_plus")
-        self.deck = self.persistent_data["deck"]
+        self.ante: int = self.persistent_data["ante"]
+        self.pair_plus: int = self.persistent_data.get("pair_plus")
+        self.deck: Deck = self.persistent_data["deck"]
 
     def handle_event(self, event: pg.event.Event) -> None:
         """
@@ -53,3 +54,5 @@ class CardDrawingState(BaseState):
 
         if self.pair_plus:
             render_chip(screen, self.pair_plus, PAIR_PLUS_CHIP_POS)
+
+        
