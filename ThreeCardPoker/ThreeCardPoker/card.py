@@ -32,9 +32,10 @@ class Card:
         self.back_img: pg.Surface = pg.transform.scale(pg.image.load(back_path), (110, 160))
         self.front_img: pg.Surface = pg.transform.scale(pg.image.load(front_path), (110, 160))
 
-    def get_texture(self) -> pg.Surface:
+    def get_texture(self, degrees: int = None) -> pg.Surface:
         """
         Gibt das zu rendernde Element zurück.
         """
 
-        return self.back_img if self.is_hidden else self.front_img
+        img = self.back_img if self.is_hidden else self.front_img
+        return pg.transform.rotate(img, degrees) if degrees != None else img
