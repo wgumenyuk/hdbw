@@ -1,7 +1,9 @@
+from math import floor
 import pygame as pg
 from states import BaseState
 from deck import Deck
 from table import render_table
+from card import play_card_shuffle_sound
 from chip import play_chip_place_sound
 from constants import TEXT_LIGHT_COLOR, GameState
 
@@ -21,19 +23,28 @@ class AnteState(BaseState):
         super().__init__()
 
         self.font = pg.font.Font(None, 24)
-        self.ante = 5
-        self.ante_text = self.font.render(f"Ante: ${self.ante}", True, TEXT_LIGHT_COLOR)
     
     def init(self, persistent_data: dict) -> None:
         """
         Initialisiert anhaltende Daten beim Eintreten eines neuen Zustandes.
         """
-
-        super().init(persistent_data)
         
+        balance = persistent_data["balance"]
+        self.persistent_data = { "balance": balance }
+
+        self.ante = 5
         self.balance: int = self.persistent_data["balance"] - self.ante
-        self.max_ante: int = self.balance / 2
+        self.max_ante = self.balance // 2
+
+        if self.balance < ANTE_STEP * 2:
+            self.next_state = GameState.GAME_OVER
+            self.is_done = True
+            return
+
+        self.ante_text = self.font.render(f"Ante: ${self.ante}", True, TEXT_LIGHT_COLOR)
         self.balance_text = self.font.render(f"Guthaben: ${self.balance}", True, TEXT_LIGHT_COLOR)
+
+        play_card_shuffle_sound()
 
     def handle_enter(self) -> None:
         """
