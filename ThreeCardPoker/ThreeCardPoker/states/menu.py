@@ -1,7 +1,14 @@
 import os.path as path
 import pygame as pg
 from states import BaseState
-from constants import BG_COLOR, TEXT_LIGHT_COLOR, SCREEN_WIDTH, SCREEN_HEIGHT, GameState
+from constants import (
+    SCREEN_WIDTH,
+    SCREEN_HEIGHT,
+    BG_COLOR,
+    TEXT_LIGHT_COLOR,
+    START_BALANCE,
+    GameState
+)
 
 OPTIONS_OFFSET = 100
 OPTIONS_SPACE_BETWEEN = 50
@@ -21,7 +28,7 @@ class MenuState(BaseState):
         super().__init__()
 
         self.next_state = GameState.ANTE
-        self.persistent_data = { "balance": 100 }
+        self.persistent_data = { "balance": START_BALANCE }
         self.font = pg.font.Font(None, 36)
 
         base_path = path.join(path.dirname(path.abspath(__file__)), "../../assets")
@@ -97,7 +104,7 @@ class MenuState(BaseState):
         Rendert die verfügbaren Optionen.
 
         Parameter:
-        - `index` (int) - Index der jeweiligen Option (aus der `self.options`-Liste)
+        - `index` (int) - Index der jeweiligen rOption (aus der `self.options`-Liste)
         """
 
         option_content = self.options[index]    
