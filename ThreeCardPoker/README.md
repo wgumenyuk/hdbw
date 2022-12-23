@@ -9,3 +9,4 @@ Dieses Spiel lässt den Spieler Drei-Karten-Poker gegen den Computer spielen.
 
 ## Anerkennungen
 - Kartenset: https://github.com/htdebeer/SVG-cards
+- Soundeffekte: https://www.kenney.nl/assets
