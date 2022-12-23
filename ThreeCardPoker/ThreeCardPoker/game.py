@@ -1,5 +1,17 @@
 import pygame as pg
-from states import BaseState, MenuState, AnteState, PairPlusState, CardDrawingState, PlayOrFoldState
+from states import (
+    BaseState,
+    MenuState,
+    AnteState,
+    PairPlusState,
+    CardDrawingState,
+    PlayOrFoldState,
+    FoldState,
+    PlayState,
+    RevealState,
+    PayoutState,
+    GameOverState
+)
 from constants import TITLE, SCREEN_WIDTH, SCREEN_HEIGHT, FPS, GameState
 
 class Game:
@@ -32,7 +44,12 @@ class Game:
             GameState.ANTE: AnteState(),
             GameState.PAIR_PLUS: PairPlusState(),
             GameState.CARD_DRAWING: CardDrawingState(),
-            GameState.PLAY_OR_FOLD: PlayOrFoldState()
+            GameState.PLAY_OR_FOLD: PlayOrFoldState(),
+            GameState.FOLD: FoldState(),
+            GameState.PLAY: PlayState(),
+            GameState.REVEAL: RevealState(),
+            GameState.PAYOUT: PayoutState(),
+            GameState.GAME_OVER: GameOverState()
         }
 
         self.state_name: str = GameState.MENU
