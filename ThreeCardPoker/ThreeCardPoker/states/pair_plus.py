@@ -20,8 +20,6 @@ class PairPlusState(BaseState):
         super().__init__()
 
         self.font = pg.font.Font(None, 24)
-        self.pair_plus = 0
-        self.pair_plus_text = self.font.render(f"Paar-Plus: ${self.pair_plus}", True, TEXT_LIGHT_COLOR)
     
     def init(self, persistent_data: dict) -> None:
         """
@@ -32,8 +30,11 @@ class PairPlusState(BaseState):
         
         self.balance: int = self.persistent_data["balance"]
         self.ante: int = self.persistent_data["ante"]
+        self.pair_plus = 0
+        
         self.balance_text = self.font.render(f"Guthaben: ${self.balance}", True, TEXT_LIGHT_COLOR)
         self.ante_text = self.font.render(f"Ante: ${self.ante}", True, TEXT_LIGHT_COLOR)
+        self.pair_plus_text = self.font.render(f"Paar-Plus: ${self.pair_plus}", True, TEXT_LIGHT_COLOR)
 
     def handle_enter(self) -> None:
         """
