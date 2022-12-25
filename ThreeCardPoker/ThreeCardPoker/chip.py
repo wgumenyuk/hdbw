@@ -1,10 +1,9 @@
-import os.path as path
+from pathlib import Path
 import pygame as pg
 from constants import TEXT_LIGHT_COLOR
 
-base_path = path.join(path.dirname(path.abspath(__file__)), "../assets")
-chip_path = path.join(base_path, "png/poker_chip.png")
-chip_place_sound_path = path.join(base_path, "ogg/chip_place.ogg")
+chip_path = Path("assets/png/poker_chip.png")
+chip_place_sound_path = Path("assets/ogg/chip_place.ogg")
 
 chip = pg.transform.scale(pg.image.load(chip_path), (80, 80))
 
