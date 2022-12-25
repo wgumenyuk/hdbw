@@ -1,4 +1,4 @@
-import os.path as path
+from pathlib import Path
 import pygame as pg
 from states import BaseState
 from constants import (
@@ -28,9 +28,8 @@ class GameOverState(BaseState):
 
         self.font = pg.font.Font(None, 36)
 
-        base_path = path.join(path.dirname(path.abspath(__file__)), "../../assets")
-        logo_path = path.join(base_path, "png/logo_black.png")
-        click_sound_path = path.join(base_path, "ogg/click.ogg")
+        logo_path = Path("assets/png/logo_black.png")
+        click_sound_path = Path("assets/ogg/click.ogg")
 
         # Logo laden und positionieren
         self.logo = pg.transform.scale(pg.image.load(logo_path), (440, 260))
