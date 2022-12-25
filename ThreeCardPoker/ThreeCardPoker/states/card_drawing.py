@@ -1,5 +1,3 @@
-import os.path as path
-from random import choice
 import pygame as pg
 from states import BaseState
 from hand import Hand
@@ -33,16 +31,8 @@ class CardDrawingState(BaseState):
 
         super().__init__()
 
-        base_path = path.join(path.dirname(path.abspath(__file__)), "../../assets")
-
         self.next_state = GameState.PLAY_OR_FOLD
         self.font = pg.font.Font(None, 24)
-
-        self.card_place_sounds = [
-            pg.mixer.Sound(path.join(base_path, "ogg/card_place_1.ogg")),
-            pg.mixer.Sound(path.join(base_path, "ogg/card_place_2.ogg")),
-            pg.mixer.Sound(path.join(base_path, "ogg/card_place_3.ogg"))
-        ]
 
     def init(self, persistent_data: dict) -> None:
         """
