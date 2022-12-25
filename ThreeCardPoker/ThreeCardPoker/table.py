@@ -1,9 +1,7 @@
-import os.path as path
+from pathlib import Path
 import pygame as pg
 
-base_path = path.join(path.dirname(path.abspath(__file__)), "../assets")
-table_path = path.join(base_path, "png/table.png")
-
+table_path = Path("assets/png/table.png")
 table = pg.image.load(table_path)
 
 def render_table(screen: pg.Surface) -> None:
