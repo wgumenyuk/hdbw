@@ -1,4 +1,3 @@
-from math import floor
 import pygame as pg
 from states import BaseState
 from deck import Deck
