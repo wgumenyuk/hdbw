@@ -9,7 +9,7 @@ PAIR_PLUS_STEP = 5
 class PairPlusState(BaseState):
     """
     Paar-Plus-Zustand.
-    Das Spiel wartet auf eine optionale Pair-Plus-Wette des Spielers.
+    Das Spiel wartet auf eine optionale Paar-Plus-Wette des Spielers.
     """
 
     def __init__(self) -> None:
