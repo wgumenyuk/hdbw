@@ -54,6 +54,7 @@ def play_card_place_sound() -> None:
     ]
 
     card_place_sound = choice(card_place_sounds)
+    pg.mixer.Sound.set_volume(card_place_sound, 0.25)
     pg.mixer.Sound.play(card_place_sound)
 
 def play_card_shuffle_sound() -> None:
