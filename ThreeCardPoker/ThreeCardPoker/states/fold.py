@@ -48,7 +48,7 @@ class FoldState(BaseState):
         self.dealer_hand: Hand = self.persistent_data["dealer_hand"]
         
         self.balance_text = self.font.render(f"Guthaben: ${self.balance}", True, TEXT_LIGHT_COLOR)
-        self.hand_ranking_text = self.font.render(self.player_hand.get_ranking(), True, TEXT_LIGHT_COLOR)
+        self.hand_ranking_text = self.font.render(self.player_hand.get_ranking_name(), True, TEXT_LIGHT_COLOR)
         self.hand_ranking_text_rect = self.hand_ranking_text.get_rect(center=HAND_PLAYER_RANKING_TEXT_POS)
         
         self.folded_hand = Hand()
