@@ -51,9 +51,9 @@ class RevealState(BaseState):
         self.is_folded: bool = self.persistent_data["is_folded"]
 
         self.balance_text = self.font.render(f"Guthaben: ${self.balance}", True, TEXT_LIGHT_COLOR)
-        self.hand_player_ranking_text = self.font.render(self.player_hand.get_ranking(), True, TEXT_LIGHT_COLOR)
+        self.hand_player_ranking_text = self.font.render(self.player_hand.get_ranking_name(), True, TEXT_LIGHT_COLOR)
         self.hand_player_ranking_text_rect = self.hand_player_ranking_text.get_rect(center=HAND_PLAYER_RANKING_TEXT_POS)
-        self.hand_dealer_ranking_text = self.font.render(self.dealer_hand.get_ranking(), True, TEXT_LIGHT_COLOR)
+        self.hand_dealer_ranking_text = self.font.render(self.dealer_hand.get_ranking_name(), True, TEXT_LIGHT_COLOR)
         self.hand_dealer_ranking_text_rect = self.hand_dealer_ranking_text.get_rect(center=HAND_DEALER_RANKING_TEXT_POS)
         
         self.revealed_player_hand = Hand()
