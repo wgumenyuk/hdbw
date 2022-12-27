@@ -175,8 +175,12 @@ class PayoutState(BaseState):
         _, dealer_ranking_level, \
         dealer_ranking_sum = self.dealer_hand.get_ranking_info()
 
-        if not self.is_folded:
-            self.payout_bonuses(player_ranking_name)
+        if self.is_folded:
+            self.result_text = self.font.render("Du hast gefolded!", True, TEXT_LOSE_COLOR)
+            self.show_result = True
+            return
+
+        self.payout_bonuses(player_ranking_name)
 
         if not self.dealer_hand.is_qualified():
             self.payout_push()
