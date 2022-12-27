@@ -63,4 +63,5 @@ def play_card_shuffle_sound() -> None:
 
     card_shuffle_sound_path = Path("assets/ogg/card_shuffle.ogg")
     card_shuffle_sound = pg.mixer.Sound(card_shuffle_sound_path)
+    pg.mixer.Sound.set_volume(card_shuffle_sound, 0.25)
     pg.mixer.Sound.play(card_shuffle_sound)
