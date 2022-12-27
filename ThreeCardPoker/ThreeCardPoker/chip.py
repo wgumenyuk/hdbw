@@ -31,4 +31,6 @@ def play_chip_place_sound() -> None:
     Spielt einen Soundeffekt ab, sobald ein Poker-Chip auf dem Tisch platziert wird.
     """
 
-    pg.mixer.Sound(chip_place_sound_path).play()
+    chip_place_sound = pg.mixer.Sound(chip_place_sound_path)
+    pg.mixer.Sound.set_volume(chip_place_sound, 0.5)
+    pg.mixer.Sound.play(chip_place_sound)
