@@ -65,7 +65,7 @@ class Hand:
 
         return self.is_straight() and self.is_flush()
 
-    def get_ranking(self) -> str:
+    def get_ranking_name(self) -> str:
         """
         Ermittelt das Ranking der Kartenhand und gibt dieses als String zurück.
         """
@@ -84,14 +84,6 @@ class Hand:
 
         return "High Card"
 
-    def get_ranking_level(self) -> int:
-        """
-        Ermittelt das Ranking der Kartenhand und gibt dieses als Integer zurück.
-        """
-
-        ranking = self.get_ranking()
-        return RANKINGS[ranking]
-
     def get_highest_card(self) -> Card:
         """
         Gibt die Karte mit dem höchsten Wert zurück.
@@ -99,16 +91,27 @@ class Hand:
 
         return max(self.cards, key=lambda card: card.rank_value)
 
+    def get_ranking_info(self) -> tuple[str, int, int]:
+        """
+        Gibt Informationen über das Ranking der Hand zurück.
+        """
+
+        ranking_name = self.get_ranking_name()
+        ranking_level = RANKINGS[ranking_name]
+        ranking_sum = sum(card.rank_value for card in self.cards)
+
+        return (ranking_name, ranking_level, ranking_sum)
+
     def is_qualified(self) -> bool:
         """
         Ermittelt, ob die Hand qualifiziert ist. Nur für den Dealer relevant.
         Alle Hands schlechter als Queen High gelten als nicht-qualifiziert.
         """
 
-        ranking = self.get_ranking()
+        ranking_name, *_ = self.get_ranking_info()
         highest_card = self.get_highest_card()
 
-        if ranking == "High Card" and highest_card.rank_value < 10:
+        if ranking_name == "High Card" and highest_card.rank_value < 10:
             return False
 
         return True
