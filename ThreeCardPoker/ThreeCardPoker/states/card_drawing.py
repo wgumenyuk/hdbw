@@ -93,7 +93,8 @@ class CardDrawingState(BaseState):
 
             # Hand-Ranking ermitteln und rendern 
             if len(self.player_hand.cards) == 3 and self.hand_ranking_text == None:
-                self.hand_ranking_text = self.font.render(self.player_hand.get_ranking(), True, TEXT_LIGHT_COLOR)
+                player_ranking_name = self.player_hand.get_ranking_name()
+                self.hand_ranking_text = self.font.render(player_ranking_name, True, TEXT_LIGHT_COLOR)
                 self.hand_ranking_text_rect = self.hand_ranking_text.get_rect(center=HAND_PLAYER_RANKING_TEXT_POS)
 
     def render(self, screen: pg.Surface) -> None:
