@@ -95,68 +95,104 @@ class PayoutState(BaseState):
             self.quit = True
             return
 
-    def payout(self, player_hand_ranking: str) -> None:
+    def payout_bonuses(self, ranking_name: str) -> None:
         """
-        Zahlt die Gewinne an den Spieler, falls er gewinnt.
+        Zahlt Boni für Ante und Paar-Plus, falls zutreffend.
+
+        Parameter:
+        - `ranking_name` (str) - Name des Rankings (z.B. Flush).
         """
 
+        payout = 0
+
+        ante_bonus = ANTE_BONUS_PAYOUTS.get(ranking_name)
+        pair_plus_bonus = PAIR_PLUS_BONUS_PAYOUTS.get(ranking_name)
+
+        if ante_bonus:
+            payout += self.ante * ante_bonus
+
+        if self.pair_plus and pair_plus_bonus:
+            payout += self.ante * pair_plus_bonus
+
+        self.balance += payout
+        self.persistent_data["balance"] = self.balance
+
+    def payout_push(self) -> None:
+        """
+        Zahlt Gewinne an den Spieler aus, wenn Push gespielt wird.
+        """
+
+        # Play Push, Ante 1:1
+        payout = self.ante * 3
+
+        self.balance += payout
+        self.persistent_data["balance"] = self.balance
+
+    def payout_win(self) -> None:
+        """
+        Zahlt Gewinne an den Spieler aus.
+
+        Parameter:
+        - `ranking_name` (str) - Name des Rankings (z.B. Flush).
+        """
+
+        # Ante und Play jeweils 1:1
         payout = self.ante * 4
-
-        ante_bonus_multiplier = ANTE_BONUS_PAYOUTS.get(player_hand_ranking)
-        pair_plus_multiplier = PAIR_PLUS_BONUS_PAYOUTS.get(player_hand_ranking)
-
-        # Ante Bonus
-        if ante_bonus_multiplier:
-            payout += self.ante * ante_bonus_multiplier
-
-        # Paar-Plus
-        if self.pair_plus and pair_plus_multiplier:
-            payout += self.pair_plus * pair_plus_multiplier
 
         self.balance += payout
         self.persistent_data["balance"] = self.balance
 
     def determine_winner(self) -> None:
         """
-        Ermittelt den Gewinner und zahlt gegebenenfalls die jeweiligen Payouts.
+        Ermittelt das Ergebnis und zahlt Gewinne an den Spieler aus oder nimmt
+        die Wetten ein.
         """
 
-        # Folded
-        if self.is_folded:
-            return
+        player_ranking_name, \
+        player_ranking_level, \
+        player_ranking_sum = self.player_hand.get_ranking_info()
 
-        # Push (Dealer nicht qualifiziert)
+        _, dealer_ranking_level, \
+        dealer_ranking_sum = self.dealer_hand.get_ranking_info()
+
+        if not self.is_folded:
+            self.payout_bonuses(player_ranking_name)
+
         if not self.dealer_hand.is_qualified():
-            self.balance += self.ante * 3
+            self.payout_push()
             return
 
-        player_ranking = self.player_hand.get_ranking_level()
-        player_ranking_name = self.player_hand.get_ranking()
-        dealer_ranking = self.dealer_hand.get_ranking_level()
-
-        # Gewinn des Dealers
-        if player_ranking < dealer_ranking:
-            # TODO Ergebnis anzeigen
+        # Ranking (z.B. Paar, Flush, usw.)
+        if player_ranking_level < dealer_ranking_level:
+            # Spieler hat verloren
+            print("Player hat verloren!")
             return
 
-        # Gewinn des Spielers
-        if player_ranking > dealer_ranking:
-            self.payout(player_ranking_name)
-            # TODO Ergebnis anzeigen
+        if player_ranking_level > dealer_ranking_level:
+            # Spieler hat gewonnen
+            self.payout_win()
             return
 
-        player_highest_card = self.player_hand.get_highest_card().rank_value
-        dealer_highest_card = self.dealer_hand.get_highest_card().rank_value
-
-        # Gewinn des Dealers
-        if player_highest_card < dealer_highest_card:
-            # TODO Ergebnis anzeigen
+        # Ranking Sum (Summe aller Rank-Werte der Karten)
+        if player_ranking_sum < dealer_ranking_sum:
+            print("Player hat verloren!")
+            return
+        
+        if player_ranking_sum > dealer_ranking_sum:
+            # Spieler hat gewonnen
+            self.payout_win()
             return
 
-        # Gewinn des Spielers
-        if player_highest_card > dealer_highest_card:
-            self.payout(player_ranking_name)
-            # TODO Ergebnis anzeigen
+        # Suits vergleichen
+        player_highest_card = self.player_hand.get_highest_card()
+        dealer_highest_card = self.dealer_hand.get_highest_card()
+
+        if player_highest_card.suit_value > dealer_highest_card.suit_value:
+            # Spieler hat gewonnen
+            self.payout_win()
+            return
+
+        # Spieler hat verloren
 
     def render(self, screen: pg.Surface) -> None:
         """
