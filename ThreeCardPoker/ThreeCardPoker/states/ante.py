@@ -32,8 +32,11 @@ class AnteState(BaseState):
         self.persistent_data = { "balance": balance }
 
         self.ante = 5
-        self.balance: int = self.persistent_data["balance"] - self.ante
+        self.balance: int = self.persistent_data["balance"]
         self.max_ante = self.balance // 2
+
+    	# Mindesteinsatz erst nach Ermitteln der maximalen Ante abziehen
+        self.balance -= self.ante
 
         if self.balance < ANTE_STEP * 2:
             self.next_state = GameState.GAME_OVER
