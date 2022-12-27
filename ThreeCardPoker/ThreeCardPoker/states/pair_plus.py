@@ -63,12 +63,17 @@ class PairPlusState(BaseState):
             return
 
         if event.type == pg.KEYUP:
+            # Pfeiltaste nach oben
             if event.key == pg.K_UP and self.balance - PAIR_PLUS_STEP >= self.ante:
                 self.balance -= PAIR_PLUS_STEP
                 self.pair_plus += PAIR_PLUS_STEP
+            
+            # Pfeiltaste nach unten
             elif event.key == pg.K_DOWN and self.pair_plus - PAIR_PLUS_STEP >= 0:
                 self.balance += PAIR_PLUS_STEP
                 self.pair_plus -= PAIR_PLUS_STEP
+            
+            # Enter
             elif event.key == pg.K_RETURN:
                 self.handle_enter()
                 return
