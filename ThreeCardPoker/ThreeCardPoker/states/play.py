@@ -16,7 +16,7 @@ from constants import (
     GameState
 )
 
-MOVE_EVENT = pg.USEREVENT + 2
+MOVE_EVENT = pg.USEREVENT + 4
 MOVE_EVENT_DELAY = 750
 
 class PlayState(BaseState):
