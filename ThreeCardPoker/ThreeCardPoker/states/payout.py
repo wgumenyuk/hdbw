@@ -1,3 +1,4 @@
+from enum import Enum
 import pygame as pg
 from states import BaseState
 from hand import Hand
@@ -33,6 +34,17 @@ PAIR_PLUS_BONUS_PAYOUTS = {
 
 TIMER_EVENT = pg.USEREVENT + 5
 TIMER_EVENT_INTERVAL = 1000
+
+class Result(Enum):
+    """
+    Enum für alle möglichen Rundenergebnisse.
+    """
+
+    FOLDED = "FOLDED"
+    LOSE = "LOSE"
+    BONUS_ONLY = "BONUS_ONLY"
+    PUSH = "PUSH"
+    WIN = "WIN"
 
 class PayoutState(BaseState):
     """
@@ -73,6 +85,7 @@ class PayoutState(BaseState):
         self.payout = 0
         self.time_active = 0
         self.show_result = False
+        self.result: Result = None
         self.result_text: pg.Surface = None
         self.payout_text: pg.Surface = None
 
@@ -94,8 +107,7 @@ class PayoutState(BaseState):
         if event.type == TIMER_EVENT:
             # Nach 2 Sekunden: Payout anzeigen, falls vorhanden
             if self.time_active == 2000:
-                self.display_win()
-                self.show_result = True
+                self.display_result()
 
             # Nach 5 Sekunden: Nächsten Zustand aufrufen
             if self.time_active >= 5000:
@@ -122,11 +134,16 @@ class PayoutState(BaseState):
 
         if self.pair_plus and pair_plus_bonus:
             self.payout += self.ante * pair_plus_bonus
+        
+        if self.payout > 0:
+            self.result = Result.BONUS_ONLY
 
     def payout_push(self) -> None:
         """
         Zahlt Gewinne an den Spieler aus, wenn Push gespielt wird.
         """
+
+        self.result = Result.PUSH
 
         # Play Push, Ante 1:1
         self.payout += self.ante * 3
@@ -139,28 +156,52 @@ class PayoutState(BaseState):
         - `ranking_name` (str) - Name des Rankings (z.B. Flush).
         """
 
-        self.result_text = self.font.render("Du hast gewonnen!", True, TEXT_WIN_COLOR)
+        self.result = Result.WIN
 
         # Ante und Play jeweils 1:1
         self.payout = self.ante * 4
 
-    def display_win(self) -> None:
+    def loss(self) -> None:
         """
-        Zeigt den Gewinn am Ende der Runde an.
+        Setzt das Ergebnis der Runde auf "Verlust".
         """
 
-        if self.payout == 0:
+        if self.result == Result.BONUS_ONLY:
             return
 
-        self.payout_text = self.font.render(f"+ ${self.payout}", True, TEXT_WIN_COLOR)
-        play_chip_place_sound()
+        self.result = Result.LOSE  
 
-    def display_loss(self) -> None:
+    def display_result(self) -> None:
         """
-        Zeigt den Verlust am Ende der Runde an.
-        """
+        Zeigt das Ergebnis am Ende der Runde an.
+        """     
 
-        self.result_text = self.font.render("Du hast verloren!", True, TEXT_LOSE_COLOR)      
+        # Spieler hat gefolded
+        if self.result == Result.FOLDED:
+            self.result_text = self.font.render("Du hast gefolded!", True, TEXT_LOSE_COLOR) 
+
+        # Spieler hat verloren
+        elif self.result == Result.LOSE:
+            self.result_text = self.font.render("Du hast verloren!", True, TEXT_LOSE_COLOR) 
+
+        # Spieler hat verloren, aber einen Ante- oder Paar-Plus-Bonus erhalten
+        elif self.result == Result.BONUS_ONLY:
+            self.result_text = self.font.render("Du hast einen Bonus erhalten!", True, TEXT_WIN_COLOR) 
+
+        # Push (Dealer nicht qualifiziert)
+        elif self.result == Result.PUSH:
+            self.result_text = self.font.render("Push! Der Dealer ist nicht qualifiziert.", True, TEXT_WIN_COLOR) 
+
+        # Spieler hat gewonnen
+        elif self.result == Result.WIN:
+            self.result_text = self.font.render("Du hast gewonnen!", True, TEXT_WIN_COLOR) 
+
+        # Payout anzeigen und Soundeffekt abspielen
+        if self.result in [ Result.WIN, Result.PUSH, Result.BONUS_ONLY ]:
+            self.payout_text = self.font.render(f"+ ${self.payout}", True, TEXT_WIN_COLOR)
+            play_chip_place_sound()
+
+        self.show_result = True
 
     def determine_winner(self) -> None:
         """
@@ -189,7 +230,7 @@ class PayoutState(BaseState):
         # Ranking (z.B. Paar, Flush, usw.)
         if player_ranking_level < dealer_ranking_level:
             # Spieler hat verloren
-            self.display_loss()
+            self.loss()
             return
 
         if player_ranking_level > dealer_ranking_level:
@@ -200,7 +241,7 @@ class PayoutState(BaseState):
         # Ranking Sum (Summe aller Rank-Werte der Karten)
         if player_ranking_sum < dealer_ranking_sum:
             # Spieler hat verloren
-            self.display_loss()
+            self.loss()
             return
         
         if player_ranking_sum > dealer_ranking_sum:
@@ -218,7 +259,7 @@ class PayoutState(BaseState):
             return
 
         # Spieler hat verloren
-        self.display_loss()
+        self.loss()
 
     def render(self, screen: pg.Surface) -> None:
         """
