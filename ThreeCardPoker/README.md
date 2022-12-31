@@ -1,6 +1,6 @@
 **Semester**|**Kurs**|**Datum**
 -----|-----|-----
-WS 2022/23|Softwareentwicklung|
+WS 2022/23|Softwareentwicklung|31.12.2022
 
 # ThreeCardPoker
 Dieses Spiel lässt den Spieler Drei-Karten-Poker gegen den Computer spielen.
