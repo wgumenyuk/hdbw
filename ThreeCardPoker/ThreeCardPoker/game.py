@@ -19,11 +19,11 @@ class Game:
     Drei-Karten-Poker.
 
     Attribute:
-    - `screen` (pg.Surface)             - Fläche, auf der das Spiel gerendert wird.
-    - `is_running` (bool)               - Ob das Spiel am Laufen ist.
-    - `states` (dict[str, BaseState])   - Zustände des Spiels.
-    - `state_name` (str)                - Name des aktuellen Zustands.
-    - `state` (BaseState)               - Aktueller Zustand.
+    - `screen` (pg.Surface)           - Fläche, auf der das Spiel gerendert wird.
+    - `is_running` (bool)             - Ob das Spiel am Laufen ist.
+    - `states` (dict[str, BaseState]) - Zustände des Spiels.
+    - `state_name` (str)              - Name des aktuellen Zustands.
+    - `state` (BaseState)             - Aktueller Zustand.
     """
 
     def __init__(self) -> None:
