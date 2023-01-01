@@ -10,10 +10,10 @@ class Card:
     Stellt eine Spielkarte dar.
 
     Attribute:
-    - `suit_value` (int)        - Wert des Suits.
-    - `rank_value` (int)        - Wert des Ranks.
-    - `back_img` (pg.Surface)   - Textur der Kartenrückseite.
-    - `front_img` (pg.Surface)  - Textur der Kartenvorderseite.
+    - `suit_value` (int)       - Wert des Suits.
+    - `rank_value` (int)       - Wert des Ranks.
+    - `back_img` (pg.Surface)  - Textur der Kartenrückseite.
+    - `front_img` (pg.Surface) - Textur der Kartenvorderseite.
     """
 
     def __init__(self, suit_name: str, suit_value: int, rank_name: str, rank_value: int) -> None:
