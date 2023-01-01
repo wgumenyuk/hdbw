@@ -136,10 +136,10 @@ class Hand:
 
         Parameter:
         Parameter:
-        - `screen` (pg.Surface)     - Fläche, auf der das Spiel gerendert wird.
-        - `pos` (list[tuple[int]])  - Positionen der jeweiligen Karten auf dem Tisch.
-        - `degrees` (int)           - Winkel, um den die Karten gedreht werden.
-        - `hidden` (tuple[bool])    - Tuple mit Werten für die jeweilige versteckte Karten.
+        - `screen` (pg.Surface)    - Fläche, auf der das Spiel gerendert wird.
+        - `pos` (list[tuple[int]]) - Positionen der jeweiligen Karten auf dem Tisch.
+        - `degrees` (int)          - Winkel, um den die Karten gedreht werden.
+        - `hidden` (tuple[bool])   - Tuple mit Werten für die jeweilige versteckte Karten.
         """
 
         for i, card in enumerate(self.cards):
