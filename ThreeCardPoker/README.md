@@ -15,7 +15,7 @@ $ pip install -r requirements.txt
 ```
 2. Ausführen
 ```sh-session
-$ python ./ThreeCardPoker/main.py
+$ python ./ThreeCardPoker
 ```
 
 ## Anerkennungen
