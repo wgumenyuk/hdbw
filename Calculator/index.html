@@ -10,6 +10,90 @@
         <title>Taschenrechner</title>
     </head>
     <body>
-        
+        <div id="calculator">
+            <!-- Display -->
+            <div class="calculator__row">
+                <span id="calculator__display"></span>
+            </div>
+
+            <!-- Erste Reihe -->
+            <div class="calculator__row">
+                <button id="calculator__button-clear" class="calculator__button gray-light-button">
+                    AC
+                </button>
+                <button id="calculator__button-ans" class="calculator__button gray-light-button">
+                    Ans
+                </button>
+                <button class="calculator__button gray-light-button">
+                    &pi;
+                </button>
+                <button class="calculator__button orange-button" value="/" data-display-value="&divide;">
+                    &divide;
+                </button>
+            </div>
+
+            <!-- Zweite Reihe -->
+            <div class="calculator__row">
+                <button class="calculator__button gray-dark-button" value="7">
+                    7
+                </button>
+                <button class="calculator__button gray-dark-button" value="8">
+                    8
+                </button>
+                <button class="calculator__button gray-dark-button" value="9">
+                    9
+                </button>
+                <button class="calculator__button orange-button" value="*" data-display-value="&times;">
+                    &times;
+                </button>
+            </div>
+
+            <!-- Dritte Reihe -->
+            <div class="calculator__row">
+                <button class="calculator__button gray-dark-button" value="4">
+                    4
+                </button>
+                <button class="calculator__button gray-dark-button" value="5">
+                    5
+                </button>
+                <button class="calculator__button gray-dark-button" value="6">
+                    6
+                </button>
+                <button class="calculator__button orange-button" value="-">
+                    &minus;
+                </button>
+            </div>
+
+            <!-- Vierte Reihe -->
+            <div class="calculator__row">
+                <button class="calculator__button gray-dark-button" value="1">
+                    1
+                </button>
+                <button class="calculator__button gray-dark-button" value="2">
+                    2
+                </button>
+                <button class="calculator__button gray-dark-button" value="3">
+                    3
+                </button>
+                <button class="calculator__button orange-button" value="+">
+                    &plus;
+                </button>
+            </div>
+
+            <!-- Fünfte Reihe -->
+            <div class="calculator__row">
+                <button class="calculator__button gray-dark-button long-button" value="0">
+                    0
+                </button>
+                <button class="calculator__button gray-dark-button" value="." data-display-value="&comma;">
+                    &comma;
+                </button>
+                <button id="calculator__button-equals" class="calculator__button orange-button">
+                    &equals;
+                </button>
+            </div>
+        </div>
+
+        <script src="./app.js"></script>
     </body>
 </html>
