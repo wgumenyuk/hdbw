@@ -24,6 +24,9 @@ const setup = () => {
         return number.toString().split(".")[1]?.length || 0;
     };
 
+    /**
+        Fügt, falls vorhanden, das vorherige Ergebnis ein. 
+    */
     const addAns = () => {
         if(!ans) return;
         input += ans;
