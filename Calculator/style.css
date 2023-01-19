@@ -2,8 +2,11 @@
     --black: #000000;
     --white: #FFFFFF;
     --gray-light: #A5A5A5;
+    --gray-light-hover: #8C8C8C;
     --gray-dark: #333333;
+    --gray-dark-hover: #2B2B2B;
     --orange: #FF9F0A;
+    --orange-hover: #E18800;
     --display-height: 8rem;
     --button-width: 5rem;
     --button-gap: 0.5rem;
@@ -77,6 +80,7 @@ body {
     font-size: 1.25em;
     outline: none;
     cursor: pointer;
+    transition: 0.15s ease-out;
 }
 
 .calculator__button.gray-light-button {
@@ -84,12 +88,24 @@ body {
     color: var(--black);
 }
 
+.calculator__button.gray-light-button:hover {
+    background: var(--gray-light-hover);
+}
+
 .calculator__button.gray-dark-button {
     background: var(--gray-dark);
 }
 
+.calculator__button.gray-dark-button:hover {
+    background: var(--gray-dark-hover);
+}
+
 .calculator__button.orange-button {
     background: var(--orange);
+}
+
+.calculator__button.orange-button:hover {
+    background: var(--orange-hover);
 }
 
 .calculator__button.long-button {
