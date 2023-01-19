@@ -51,16 +51,21 @@ body {
 
 #calculator {
     display: flex;
-    max-width: calc(var(--button-width) * 4 + var(--button-gap) * 3);
     flex-direction: column;
+    padding: 1em;
+    border: 1px solid var(--gray-dark);
+    border-radius: 1em;
     gap: var(--button-gap);
 }
 
 #calculator__display {
     display: flex;
     color: white;
-    width: 100%;
+    max-width: calc(var(--button-width) * 4 + var(--button-gap) * 3);
     height: var(--display-height);
+    margin-bottom: 0.35em;
+    border-bottom: 2px solid var(--gray-dark);
+    border-radius: 0.25em;
     align-items: center;
     font-size: 2.5em;
     overflow-x: auto;
