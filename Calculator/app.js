@@ -3,10 +3,12 @@ const setup = () => {
     const buttons = document.querySelectorAll(".calculator__button[value]");
     const buttonClear = document.getElementById("calculator__button-clear");
     const buttonAns = document.getElementById("calculator__button-ans");
+    const buttonParentheses = document.getElementById("calculator__button-parentheses");
     const buttonEquals = document.getElementById("calculator__button-equals");
 
     let input = "";
     let ans = "";
+    let isParenthesesOpen = false;
 
     // Event-Listener für alle Knöpfe mit "value"-Attribut hinzufügen
     for(const button of buttons) {
@@ -38,6 +40,16 @@ const setup = () => {
     */
     const clear = () => {
         input = "";
+        isParenthesesOpen = false;
+        display.innerText = input;
+    };
+
+    /**
+        Öffnet und schließt Klammern.
+    */
+    const toggleParentheses = () => {
+        input += (isParenthesesOpen) ? ")" : "("; 
+        isParenthesesOpen = !isParenthesesOpen;
         display.innerText = input;
     };
 
@@ -71,6 +83,7 @@ const setup = () => {
 
     buttonClear.addEventListener("click", clear);
     buttonAns.addEventListener("click", addAns);
+    buttonParentheses.addEventListener("click", toggleParentheses);
     buttonEquals.addEventListener("click", calculate);
 };
 
