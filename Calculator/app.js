@@ -27,20 +27,20 @@ const setup = () => {
     };
 
     /**
-        Fügt, falls vorhanden, das vorherige Ergebnis ein. 
-    */
-    const addAns = () => {
-        if(!ans) return;
-        input += ans;
-        display.innerText = input;
-    };
-
-    /**
         Setzt den Taschenrechner zurück.
     */
     const clear = () => {
         input = "";
         isParenthesesOpen = false;
+        display.innerText = input;
+    };
+
+    /**
+        Fügt, falls vorhanden, das vorherige Ergebnis ein. 
+    */
+    const addAns = () => {
+        if(!ans) return;
+        input += ans;
         display.innerText = input;
     };
 
