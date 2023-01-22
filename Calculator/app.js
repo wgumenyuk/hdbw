@@ -48,9 +48,12 @@ const setup = () => {
         Öffnet und schließt Klammern.
     */
     const toggleParentheses = () => {
-        input += (isParenthesesOpen) ? ")" : "("; 
+        const char = (isParenthesesOpen) ? ")" : "("; 
+        
+        input += char;
+        display.innerText += char;
+
         isParenthesesOpen = !isParenthesesOpen;
-        display.innerText = input;
     };
 
     /**
