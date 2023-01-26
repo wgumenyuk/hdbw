@@ -15,6 +15,7 @@ const setup = () => {
         button.addEventListener("click", () => {
             input += button.value;
             display.innerText += button.dataset.displayValue || button.value;
+            scrollDisplay();
         });
     }
 
@@ -24,6 +25,13 @@ const setup = () => {
     const countDecimals = (number) => {
         if(Math.floor(number) === number) return 0;
         return number.toString().split(".")[1]?.length || 0;
+    };
+
+    /**
+        Verschiebt die Ansicht im Display ganz nach rechts.
+    */
+    const scrollDisplay = () => {
+        display.scrollBy({ left: display.offsetWidth, behavior: "smooth" });
     };
 
     /**
@@ -42,6 +50,7 @@ const setup = () => {
         if(!ans) return;
         input += ans;
         display.innerText = input;
+        scrollDisplay();
     };
 
     /**
@@ -77,7 +86,7 @@ const setup = () => {
             ans = result.toString();
 
             display.innerText = result;
-            display.scrollBy({ left: display.offsetWidth, behavior: "smooth" });
+            scrollDisplay();
         } catch(error) {
             display.innerText = "Error";
             input = "";
