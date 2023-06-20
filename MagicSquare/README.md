@@ -3,7 +3,7 @@
 SoSe 2023|Softwareentwicklung 2|20.06.2023
 
 # Magic Square
-Programm zum Lösen von magischen Quadraten für $n\in\lbrace[2,10]\backslash2\N\rbrace$.
+Programm zum Lösen von magischen Quadraten für $n\in\lbrace[2,10]\backslash2\mathbb{N}\rbrace$.
 
 > Bei diesem Projekt handelt es sich um ein benotetes Übungsprojekt.
 
