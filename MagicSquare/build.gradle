@@ -1,0 +1,18 @@
+plugins {
+    id "java"
+}
+
+version = "1.0.0"
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+jar {
+    manifest {
+        attributes "Main-Class": "de.gumenyuk.magic_square.Main"
+    }
+}
+sourceCompatibility = JavaVersion.VERSION_15
+targetCompatibility = JavaVersion.VERSION_15
