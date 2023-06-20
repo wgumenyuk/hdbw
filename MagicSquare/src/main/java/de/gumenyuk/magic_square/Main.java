@@ -23,6 +23,7 @@ public class Main {
 
     /**
         Führt das Programm aus.
+        @param args Vom Nutzer übergebene Argumente.
     */
     public static void main(String[] args) {
         if(args.length == 0) {
