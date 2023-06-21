@@ -1,6 +1,6 @@
 **Semester**|**Kurs**|**Datum**
 -----|-----|-----
-WS 2022/23|Softwareentwicklung|27.11.2022
+WiSe 2022|Softwareentwicklung|27.11.2022
 
 # ThreeCardPokerHands
 Dieses Programm generiert ein standard 52er-Kartendeck und mischt dieses anschließend mit `random.shuffle()` durch.
