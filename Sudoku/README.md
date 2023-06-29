@@ -58,3 +58,6 @@ $ ./gradlew
 ```
 $ java -jar ./build/libs/Sudoku.jar
 ```
+
+## Anerkennungen
+- https://de.wikipedia.org/wiki/Backtracking
