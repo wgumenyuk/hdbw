@@ -3,7 +3,7 @@
 SoSe 2023|Softwareentwicklung 2|29.06.2023
 
 # Sudoku
-Programm zum Lösen von Sudoku.
+Programm zum Lösen von Sudokus.
 
 > Bei diesem Projekt handelt es sich um ein benotetes Übungsprojekt.
 
