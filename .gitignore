@@ -1,6 +1,0 @@
-node_modules
-__pycache__
-.gradle
-build
-*.env
-!.env.example
