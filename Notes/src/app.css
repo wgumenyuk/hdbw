@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::selection {
+    @apply bg-blue-500/25 text-neutral-700;
+}
+
+html, body {
+    @apply bg-neutral-100 text-neutral-700 min-h-screen;
+}
