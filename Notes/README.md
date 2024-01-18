@@ -12,9 +12,9 @@ Online-Notizapp mit Verschlüsselung.
 ## Technische Aspekte
 - SvelteKit
 - Tailwind CSS
-- MongoDB (über [`mongoose`](#))
-- Redis (über [`ioredis`](#))
-- Natives Krypto-Modul [`node:crypto`](#)
+- MongoDB (über [`mongoose`](https://github.com/Automattic/mongoose))
+- Redis (über [`ioredis`](https://github.com/redis/ioredis))
+- Natives Krypto-Modul [`node:crypto`](https://nodejs.org/api/crypto.html)
     - AES-256-CBC
     - Scrypt
 
