@@ -53,6 +53,7 @@ export const handle: Handle = async ({ event, resolve }) => {
     }
 
     locals.user = {
+        sessionId,
         userId,
         username,
         passwordKey,
