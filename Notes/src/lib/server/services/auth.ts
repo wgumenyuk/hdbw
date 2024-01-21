@@ -12,11 +12,7 @@ import {
     hashPassword,
     comparePassword
 } from "$server/services/crypto";
-import {
-    setCookie,
-    getCookie,
-    deleteCookie
-} from "$server/services/cookies";
+import { setCookie, deleteCookie } from "$server/services/cookies";
 
 // Types
 import type { Cookies } from "@sveltejs/kit";
@@ -181,8 +177,7 @@ export const registerUser = async (
     Meldet einen Nutzer ab.
 */
 export const logoutUser = async (cookies: Cookies, session: App.Session) => {
-    const { username } = session;
-    const sessionId = getCookie(cookies, SESSION_COOKIE_NAME)!;
+    const { sessionId, username } = session;
 
     // Sitzung aus Redis entfernen
     await Promise.all([
