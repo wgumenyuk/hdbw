@@ -2,13 +2,13 @@ import { error } from "@sveltejs/kit";
 import { z } from "zod";
 
 // Intern
+import { logger } from "$server/logger";
 import { Note } from "$server/models/note";
 import { User } from "$server/models/user";
 import { encryptAes, decryptAes, randomId } from "$server/services/crypto";
 
 // Types
 import type { Note as NoteSchema } from "$server/models/note";
-import { logger } from "$server/logger";
 
 /**
     Schema für das Notizformular.
