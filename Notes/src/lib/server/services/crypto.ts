@@ -58,7 +58,7 @@ export const comparePassword = async (password: string, hash: string) => {
 };
 
 /**
-    Verschlüssel einen String mit AES-256-CBC.
+    Verschlüsselt einen String mit AES-256-CBC.
 */
 export const encryptAes = async (data: string, password: string) => {
     const iv = crypto.randomBytes(16);
