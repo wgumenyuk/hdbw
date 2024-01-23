@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { base } from "$app/paths";
     import { goto } from "$app/navigation";
 
     // Komponente
@@ -34,7 +35,7 @@
     <span class="text-neutral-500 text-sm">
         Insgesamt {notes.length} {(notes.length === 1) ? "Notiz" : "Notizen"}
     </span>
-    <Button on:click={() => goto("/notes/new")}>
+    <Button on:click={() => goto(`${base}/notes/new`)}>
         <div class="bg-neutral-50 hover:bg-neutral-100 p-2 rounded">
             <PlusIcon size="20px"/>
         </div>
@@ -45,7 +46,7 @@
     <div class="flex flex-col gap-4">
         {#each notes as note, i}
             <a
-                href="/notes/edit/{note.id}"
+                href="{base}/notes/edit/{note.id}"
                 class="
                     flex
                     flex-col

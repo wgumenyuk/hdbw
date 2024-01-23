@@ -1,6 +1,7 @@
 import { redirect } from "@sveltejs/kit";
 
 // Intern
+import { base } from "$app/paths";
 import { redis, initRedis } from "$server/databases/redis";
 import { initMongodDb } from "$server/databases/mongoose";
 import { getCookie, deleteCookie } from "$server/services/cookies";
@@ -19,8 +20,8 @@ await Promise.all([
     Routen, die ohne Anmeldung aufgerufen werden können.
 */
 const UNPROTECTED_ROUTES = [
-    "/login",
-    "/register"
+    `${base}/login`,
+    `${base}/register`
 ];
 
 /**
@@ -36,7 +37,7 @@ export const handle: Handle = async ({ event, resolve }) => {
     const sessionId = getCookie(cookies, SESSION_COOKIE_NAME);
 
     if(!sessionId) {
-        throw redirect(303, "/login");
+        throw redirect(303, `${base}/login`);
     }
 
     // Sitzung aus Redis abrufen
@@ -49,7 +50,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 
     if(!userId || !username || !passwordKey || !loggedInAt) {
         deleteCookie(cookies, SESSION_COOKIE_NAME);
-        throw redirect(303, "/login");
+        throw redirect(303, `${base}/login`);
     }
 
     locals.user = {

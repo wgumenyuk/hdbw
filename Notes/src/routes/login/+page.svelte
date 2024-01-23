@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { base } from "$app/paths";
+
     import { LockIcon } from "lucide-svelte";
     import { Card } from "$components/Card";
     import { TextInput, PasswordInput } from "$components/Input";
@@ -62,6 +64,6 @@
 
     <span class="block mt-4 text-sm text-center">
         Noch kein Konto?
-        <Link href="/register">Registrieren</Link>.
+        <Link href="{base}/register">Registrieren</Link>.
     </span>
 </Card>

@@ -1,6 +1,7 @@
 import { redirect } from "@sveltejs/kit";
 
 // Intern
+import { base } from "$app/paths";
 import { logger } from "$server/logger";
 import {
     createNote,
@@ -43,6 +44,6 @@ export const actions: Actions = {
             };
         }
 
-        throw redirect(303, "/notes");
+        throw redirect(303, `${base}/notes`);
     }
 };

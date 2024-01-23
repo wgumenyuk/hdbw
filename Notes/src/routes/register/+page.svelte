@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { base } from "$app/paths";
     import { UserPlusIcon } from "lucide-svelte";
     import { Card } from "$components/Card";
     import { TextInput, PasswordInput } from "$components/Input";
@@ -62,6 +63,6 @@
 
     <span class="block mt-4 text-sm text-center">
         Bereits ein Konto?
-        <Link href="/login">Anmelden</Link>.
+        <Link href="{base}/login">Anmelden</Link>.
     </span>
 </Card>

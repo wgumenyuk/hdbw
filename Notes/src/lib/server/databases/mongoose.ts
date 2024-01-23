@@ -14,6 +14,8 @@ export const initMongodDb = async () => {
         return;
     }
 
+    logger.info(`[Datenbank] Verbinde zu MongoDB "${new URL(MONGODB_URI).host}"`);
+
     try {
         await mongoose.connect(MONGODB_URI, {
             dbName: "notes",

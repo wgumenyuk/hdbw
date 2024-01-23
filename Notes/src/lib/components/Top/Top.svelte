@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { base } from "$app/paths";
     import { goto } from "$app/navigation";
 
     // Komponente
@@ -10,7 +11,7 @@
 <Card>
     <div class="flex justify-between items-center h-5">
         <!-- Logo -->
-        <Button variant="tertiary" on:click={() => goto("/notes")}>
+        <Button variant="tertiary" on:click={() => goto(`${base}/notes`)}>
             <div class="flex items-center gap-2 py-2">
                 <NotebookIcon size="20px"/>
                 <span>
@@ -20,7 +21,7 @@
         </Button>
 
         <!-- Abmelden -->
-        <Button variant="tertiary" on:click={() => goto("/logout")}>
+        <Button variant="tertiary" on:click={() => goto(`${base}/logout`)}>
             <div class="flex items-center gap-2 py-2">
                 <LogOutIcon size="20px"/>
                 <span>

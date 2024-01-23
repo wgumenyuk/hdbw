@@ -1,7 +1,7 @@
 import { redirect } from "@sveltejs/kit";
 
-
 // Intern
+import { base } from "$app/paths";
 import { logger } from "$server/logger";
 import {
     authSchema,
@@ -16,7 +16,7 @@ import type { Actions, PageServerLoad } from "./$types";
 */
 export const load: PageServerLoad = ({ locals }) => {
     if(locals.user) {
-        throw redirect(303, "/notes");
+        throw redirect(303, `${base}/notes`);
     }
 };
 
@@ -53,6 +53,6 @@ export const actions: Actions = {
             };
         }
 
-        throw redirect(303, "/notes");
+        throw redirect(303, `${base}/notes`);
     }
 };

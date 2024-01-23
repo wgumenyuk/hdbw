@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { base } from "$app/paths";
     import { goto } from "$app/navigation";
 
     // Komponente
@@ -30,7 +31,7 @@
         Löscht die Notiz.
     */
     const deleteNote = async () => {
-        const response = await fetch(`/api/v1/notes/${note.data?.id}`, {
+        const response = await fetch(`${base}/api/v1/notes/${note.data?.id}`, {
             method: "DELETE"
         });
 
@@ -41,7 +42,7 @@
             return;
         }
 
-        return goto("/notes");
+        return goto(`${base}/notes`);
     };
 </script>
 

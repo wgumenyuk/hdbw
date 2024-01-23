@@ -24,6 +24,8 @@ export const initRedis = async () => {
         return;
     }
 
+    logger.info(`[Datenbank] Verbinde zu Redis "${REDIS_HOST}"`);
+
     try {
         await redis.connect();
     } catch(err) {
