@@ -1,6 +1,7 @@
 <script lang="ts">
     import { base } from "$app/paths";
 
+    // Komponente
     import { LockIcon } from "lucide-svelte";
     import { Card } from "$components/Card";
     import { TextInput, PasswordInput } from "$components/Input";
